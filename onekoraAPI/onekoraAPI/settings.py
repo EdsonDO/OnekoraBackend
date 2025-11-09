@@ -69,12 +69,12 @@ WSGI_APPLICATION = 'onekoraAPI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Cambiamos el motor
-        'NAME': 'onekora_db',                   # El nombre de nuestra BD
-        'USER': 'root',                         # Tu usuario de MySQL (usualmente 'root')
-        'PASSWORD': os.getenv('DB_PASSWORD'),   # ¡Lee el secreto del .env!
-        'HOST': 'localhost',                    # O '127.0.0.1'
-        'PORT': '3306',                         # Puerto por defecto de MySQL
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'onekora_db',                   
+        'USER': 'root',                         
+        'PASSWORD': os.getenv('DB_PASSWORD'),   
+        'HOST': 'localhost',                    
+        'PORT': '3306',                         
         'OPTIONS': {
             'sql_mode': 'STRICT_TRANS_TABLES',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
