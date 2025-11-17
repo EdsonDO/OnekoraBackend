@@ -5,7 +5,7 @@ from django.conf import settings
 
 
 class UsuarioPerfil(models.Model):
-   
+    
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True, related_name='perfil')
     telf = models.CharField(max_length=15, blank=True, null=True) 
     pts_acum = models.IntegerField(default=0)
@@ -15,7 +15,10 @@ class UsuarioPerfil(models.Model):
         choices=[('ciudadano', 'Ciudadano'), ('recolector', 'Recolector'), ('admin', 'Admin')],
         default='ciudadano'
     )
-   
+    
+    direccion = models.CharField(max_length=255, blank=True, null=True)
+    sector = models.CharField(max_length=100, blank=True, null=True)
+    
     def __str__(self):
         return self.user.username
 
@@ -26,7 +29,7 @@ class Configuracion(models.Model):
     clave = models.CharField(max_length=50, unique=True)
     valor = models.CharField(max_length=255)
     descrip = models.TextField(blank=True, null=True)
-    fecha_mod = models.DateTimeField(auto_now=True) # auto_now = se actualiza solo
+    fecha_mod = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.clave
@@ -84,7 +87,7 @@ class Ruta(models.Model):
     hora_ini = models.TimeField()
     hora_fin = models.TimeField()
     polyline_encoded = models.TextField(blank=True, null=True)
-    esta_activo = models.BooleanField(default=True) # Para el Soft Delete
+    esta_activo = models.BooleanField(default=True) 
 
     def __str__(self):
         return self.nombre_ruta
