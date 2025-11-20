@@ -135,8 +135,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Los nombres de onekoramobile.com y onekoraweb.com son provisionales no se lo tomen enserio
 # No descomentar esto hasta que se haya implementado la web y la app movil, porfis
 # CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000", # Esto es para cuando se conecte a Angular)
-#     "http://localhost:8081", # React Native (si corre ahí)
+#     "http://localhost:3000",
+#     "http://localhost:8081",
 #     "http://onekoramobile.com",
 #     "http://onekoraweb.com",
 # ]

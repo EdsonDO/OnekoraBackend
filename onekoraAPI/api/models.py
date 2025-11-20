@@ -66,12 +66,28 @@ class Direccion(models.Model):
         return f"{self.user.username} - {self.descrip}"
 
 class TipoResiduo(models.Model):
+    class CodigoOficial(models.TextChoices):
+        GENERAL = 'GEN', 'General (No Aprovechable)'
+        ORGANICO = 'ORG', 'Orgánico'
+        RECICLABLE = 'REC', 'Reciclable (Aprovechable)'
+        PELIGROSO = 'PEL', 'Peligroso'
+
     id_tipo_res = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
     icono = models.CharField(max_length=50, blank=True, null=True)
+    codigo = models.CharField(
+        max_length=3, 
+        choices=CodigoOficial.choices, 
+        default=CodigoOficial.GENERAL
+    )
+    color_hex = models.CharField(
+        max_length=7, 
+        default='#212121',
+        help_text="Color hexadecimal para la App (Ej: #28A745)"
+    )
 
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre} ({self.get_codigo_display()})"
 
 class Ruta(models.Model):
     DIAS_SEMANA = [
