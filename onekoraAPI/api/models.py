@@ -1,14 +1,12 @@
-
 from django.db import models
 from django.conf import settings
-
-
 
 class UsuarioPerfil(models.Model):
     
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True, related_name='perfil')
     telf = models.CharField(max_length=15, blank=True, null=True) 
     pts_acum = models.IntegerField(default=0)
+    recolecciones = models.IntegerField(default=0) 
     modo_viaje = models.BooleanField(default=False)
     rol = models.CharField(
         max_length=10,
@@ -21,8 +19,6 @@ class UsuarioPerfil(models.Model):
     
     def __str__(self):
         return self.user.username
-
-
 
 class Configuracion(models.Model):
     id_config = models.AutoField(primary_key=True)
@@ -189,7 +185,7 @@ class ArtiEducativo(models.Model):
     titulo = models.CharField(max_length=255)
     resumen = models.TextField(blank=True, null=True)
     contenido = models.TextField()
-    img_portada = models.CharField(max_length=255, blank=True, null=True) # Cambiaremos esto a ImageField luego
+    img_portada = models.CharField(max_length=255, blank=True, null=True) 
     esta_activo = models.BooleanField(default=True)
 
     def __str__(self):
@@ -240,7 +236,7 @@ class Recompensa(models.Model):
     nombre = models.CharField(max_length=100)
     costo_pts = models.IntegerField()
     stock = models.IntegerField(default=0)
-    imagen = models.CharField(max_length=255, blank=True, null=True) # Cambiaremos esto a ImageField luego
+    imagen = models.CharField(max_length=255, blank=True, null=True) 
     esta_activo = models.BooleanField(default=True)
 
     class Meta:
@@ -268,4 +264,99 @@ class PersonalMunicipal(models.Model):
     disponible = models.BooleanField(default=True)
     esta_activo = models.BooleanField(default=True)
     def __str__(self):
-        return self.nombre    
+        return self.nombre
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    """
+============================================================================
+AVISO DE PROPIEDAD INTELECTUAL
+============================================================================
+* PROYECTO:        Onekora (Anteriormente "Huánuco Recicla")
+* DESARROLLADOR:   Dionicio Orihuela Edson Raul
+* AÑO:             2025
+* UBICACIÓN:       Huánuco, Perú
+
+----------------------------------------------------------------------------
+AUTORÍA
+----------------------------------------------------------------------------
+Este código fuente, incluyendo la lógica de negocio, arquitectura de software
+(Frontend y Backend), diseño de interfaces (UI), experiencia de usuario (UX),
+activos gráficos y el rebranding de la identidad visual de la marca "Onekora",
+ha sido desarrollado en su totalidad por Dionicio Orihuela Edson Raul.
+
+El autor certifica su autoría exclusiva sobre la obra completa, abarcando:
+1. Desarrollo FullStack (React Native / Django).
+2. Diseño Gráfico y Creativo.
+3. Ingeniería de Software y Base de Datos.
+
+----------------------------------------------------------------------------
+MARCO LEGAL
+----------------------------------------------------------------------------
+Esta obra está protegida por las leyes de propiedad intelectual de la
+República del Perú, específicamente bajo el DECRETO LEGISLATIVO Nº 822
+(Ley sobre el Derecho de Autor) y sus modificatorias.
+
+Conforme al Artículo 22 de dicha ley, el autor reivindica su DERECHO MORAL
+de paternidad sobre la obra, el cual es perpetuo, inalienable e imprescriptible.
+
+Queda terminantemente prohibida la reproducción total o parcial, distribución,
+comunicación pública, transformación o ingeniería inversa de este software
+sin la autorización previa y por escrito del titular de los derechos.
+
+Cualquier uso no autorizado de este código o de los elementos visuales
+asociados constituirá una violación a los derechos de propiedad intelectual
+y será sujeto a las acciones civiles y penales correspondientes ante el
+INDECOPI y el Poder Judicial del Perú.
+
+============================================================================
+"""
